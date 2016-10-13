@@ -29,8 +29,10 @@ namespace OdeToFood
         // For more information on how to configure your application, visit http://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddMvcCore();
             services.AddSingleton<IGreeter, Greeter>();
             services.AddSingleton(Configuration);
+            
 
         }
 
@@ -43,21 +45,20 @@ namespace OdeToFood
             {
                 app.UseDeveloperExceptionPage();
             }
-            app.UseFileServer();
+            else
+            {
+                app.UseExceptionHandler(new ExceptionHandlerOptions
+                {
+                    ExceptionHandler = context => context.Response.WriteAsync("oops")
+                });
+            }
+           // app.UseFileServer();
             //app.UseDefaultFiles();
             //app.UseStaticFiles();
 
-            app.UseWelcomePage(new WelcomePageOptions
-            {
+            app.UseMvcWithDefaultRoute();
 
-                Path = "/welcome"
-            });
-
-            app.Run(async (context) =>
-            {
-                var message = greeter.GetGreeting();
-                await context.Response.WriteAsync(message);
-            });
+            
         }
     }
 }
