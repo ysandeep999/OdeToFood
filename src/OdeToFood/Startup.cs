@@ -43,6 +43,15 @@ namespace OdeToFood
             {
                 app.UseDeveloperExceptionPage();
             }
+            app.UseFileServer();
+            //app.UseDefaultFiles();
+            //app.UseStaticFiles();
+
+            app.UseWelcomePage(new WelcomePageOptions
+            {
+
+                Path = "/welcome"
+            });
 
             app.Run(async (context) =>
             {
