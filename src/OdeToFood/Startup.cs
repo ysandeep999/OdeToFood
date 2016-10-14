@@ -30,7 +30,9 @@ namespace OdeToFood
         // For more information on how to configure your application, visit http://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvcCore();
+            //services.AddMvcCore();
+            services.AddMvc();
+            //services.AddMvcCore().AddAuthorization().AddJsonFormatters(j => j.Formatting = Newtonsoft.Json.Formatting.Indented);
             services.AddSingleton<IGreeter, Greeter>();
             services.AddSingleton(Configuration);
             
@@ -57,6 +59,8 @@ namespace OdeToFood
             //app.UseDefaultFiles();
             //app.UseStaticFiles();
 
+
+            
             app.UseMvc(configureRoutes);
 
             app.Run(ctx => ctx.Response.WriteAsync("Not Found"));
