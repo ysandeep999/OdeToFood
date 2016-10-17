@@ -50,7 +50,8 @@ namespace OdeToFood.Controllers
 
             newRestaurant = _Restaurant.add(newRestaurant);
 
-            return View("Details", newRestaurant);
+            return RedirectToAction("Details", new { id = newRestaurant.ID });
+            //return View("Details", newRestaurant);
         }
     }
 }
