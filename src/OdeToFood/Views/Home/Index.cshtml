@@ -10,6 +10,11 @@
         @foreach (var restaurant in Model.Restaurants)
         {
         <tr>
+            <td>
+                <a href="/Home/details/@restaurant.ID"> Details</a>
+
+            @Html.ActionLink("views","Details", new {id = restaurant.ID })
+            </td>
             <td> @restaurant.ID  </td>
             <td>@restaurant.Name</td>
         </tr>

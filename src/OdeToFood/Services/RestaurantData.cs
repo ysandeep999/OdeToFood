@@ -1,11 +1,14 @@
 ﻿using OdeToFood.Entities;
 using System.Collections.Generic;
+using System;
+using System.Linq;
 
 namespace OdeToFood.Services
 {
     public interface IRestaurantData
     {
         IEnumerable<Restaurant> GetAll();
+        Restaurant Get(int id);
     }
     public class InMemoryRestaurantData : IRestaurantData
     {
@@ -25,6 +28,10 @@ namespace OdeToFood.Services
         {
             return RestaurantList;
         }
-            
+
+        public Restaurant Get(int id)
+        {
+            return RestaurantList.FirstOrDefault(r => r.ID == id);
+        }
     }
 }
