@@ -5,6 +5,12 @@
     @Model.Name
 </h1>
 
-<div> ... details...</div>
+<div>
+    id:  @Model.ID
+</div>
 
-@Html.ActionLink("Home",nameof(HomeController.Index))
+<div>
+    Cuisine: @Model.Cuisine
+</div>
+
+@Html.ActionLink("Home", nameof(HomeController.Index))
