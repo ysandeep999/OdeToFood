@@ -33,7 +33,7 @@ namespace OdeToFood
             services.AddMvc();
             //services.AddMvcCore().AddAuthorization().AddJsonFormatters(j => j.Formatting = Newtonsoft.Json.Formatting.Indented);
             services.AddSingleton<IGreeter, Greeter>();
-            services.AddScoped<IRestaurantData, InMemoryRestaurantData>();
+            services.AddScoped<IRestaurantData, SqlRestaurantData>();
             services.AddSingleton(Configuration);
 
             services.AddDbContext<OdeToFoodDbContext>(options => 
